@@ -3,13 +3,14 @@ import { Octokit } from '@octokit/core';
 import './App.css';
 import CommitsList from './components/CommitsList';
 
+
 function App() {
   const [commitData, setCommitData] = useState({})
 
   useEffect(() => {
 
     const octokit = new Octokit({
-      auth: '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'
+      auth: process.env.REACT_APP_PAT_GITHUB
     })
 
     const getCommits = async () => {
@@ -28,7 +29,10 @@ function App() {
   }, [])
 
   return (
-    <div className="App">
+    <div className="App p-5 text-center">
+      <h3>Repo Master Commits For: </h3>
+      <h1>Crossroads Take Home Test</h1>
+      <p className="pb-3">(in order from latest to earliest)</p>
       <CommitsList commits={commitData} />
     </div>
   );
