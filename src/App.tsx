@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Octokit } from '@octokit/core';
-import logo from './logo.svg';
 import './App.css';
+import CommitsList from './components/CommitsList';
 
 function App() {
   const [commitData, setCommitData] = useState({})
@@ -9,7 +9,7 @@ function App() {
   useEffect(() => {
 
     const octokit = new Octokit({
-      auth: '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'
+      auth: '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'
     })
 
     const getCommits = async () => {
@@ -29,7 +29,7 @@ function App() {
 
   return (
     <div className="App">
-      
+      <CommitsList commits={commitData} />
     </div>
   );
 }
